@@ -1,19 +1,25 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <selectField />
+    <favourites />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import favourites from "./components/favourites";
+import selectField from "./components/select";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    selectField,
+    favourites
+  },
+
+  mounted: function() {
+    this.$store.dispatch("getCurrencies");
   }
-}
+};
 </script>
 
 <style>
