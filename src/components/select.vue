@@ -3,7 +3,7 @@
   <select v-model="favourite">
       <option v-for="curr in rates" :key="curr.code"> {{curr.code}} </option>
   </select>
-  <button class="addFav" @click="addFavourite(favourite)">Add</button>
+  <button class="addFav" @click="addFavourite(favourite)">Dodaj do ulubionych</button>
 </div>
 </template>
 
@@ -25,6 +25,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+select {
+    width: 100px;
+}
 </style>
