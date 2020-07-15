@@ -17,6 +17,7 @@ const store = new Vuex.Store({
             state.favCurrencies.push(fav);
         },
         deleteFav(state, del) {
+            console.log(del)
             state.favCurrencies.splice(del, 1);
         }
     },
@@ -33,20 +34,13 @@ const store = new Vuex.Store({
             })
         },
         addFavourite(context, fav) {
-            context.getters.currencyRates.find(element => {
-                if(element.code === fav) {
-                    context.commit('setFavourite', element);
-                }
-            })
-
+            let favourite = context.getters.currencyRates.find(element => element.code === fav)
+            if(!context.state.favCurrencies.includes(favourite)) {
+                favourite ? context.commit('setFavourite', favourite) : ''
+            }
         },
         deleteFavourite(context, deleted) {
-            let currentFav
-            context.state.favCurrencies.find(element => {
-                if(element.code === deleted) {
-                    currentFav = deleted;
-                }
-            })
+            let currentFav = context.state.favCurrencies.find(element => element.code === deleted)
             const index = context.state.favCurrencies.indexOf(currentFav);
             if(index > -1) {
                 context.commit('deleteFav', index)

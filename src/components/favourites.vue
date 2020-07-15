@@ -13,7 +13,7 @@
         <th>{{fav.code}}</th>
         <th>{{fav.bid}}</th>
         <th>{{fav.ask}}</th>
-        <th><button @click="deleteFavourite">Usuń</button></th>
+        <th><button @click="deleteFavourite(fav.code)">Usuń</button></th>
       </tr>
     </table>
   </div>
@@ -29,8 +29,8 @@ props: ["code"],
     }
   },
   methods: {
-      deleteFavourite(event) {
-          console.log(event.target);
+      deleteFavourite(code) {
+          this.$store.dispatch('deleteFavourite', code)
       }
   }
 };
