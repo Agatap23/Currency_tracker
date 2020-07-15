@@ -20,11 +20,11 @@ export default {
   },
   created: async function() {
     await this.$store.dispatch("getCurrencies");
-    const favCur = localStorage.getItem('favCur')
-    if(favCur) {
-      favCur.split(';').map( fav => {
-        this.$store.dispatch('addFavourite', fav)
-      })
+    const favCur = localStorage.getItem("favCur");
+    if (favCur) {
+      favCur.split(";").map(fav => {
+        this.$store.dispatch("addFavourite", fav);
+      });
     }
   }
 };
